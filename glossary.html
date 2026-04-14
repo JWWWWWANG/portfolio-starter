@@ -1118,33 +1118,32 @@
     demo.addEventListener('mouseleave', () => { c.style.opacity = 0; });
   });
 
-  /* ---------- M02 Parallax ---------- */
+  /* ---------- M02 Parallax + M07 Scroll-linked ----------
+     Reveal.js scroll view uses its own scroll container, so
+     window's scroll event never fires. Use a rAF loop instead
+     and drive both effects off getBoundingClientRect. */
   const parallaxDemo = document.querySelector('.parallax-demo');
-  if (parallaxDemo) {
-    const bg = parallaxDemo.querySelector('.bg');
-    const onScroll = () => {
-      const r = parallaxDemo.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const center = r.top + r.height / 2;
-      const delta = (center - vh / 2) / vh;
-      bg.style.transform = `translate3d(0, ${delta * -80}px, 0)`;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-
-  /* ---------- M07 Scroll-linked transform ---------- */
+  const parallaxBg = parallaxDemo && parallaxDemo.querySelector('.bg');
   const sl = document.querySelector('.scrolllink-demo');
-  if (sl) {
-    const thing = sl.querySelector('.thing');
-    const onScroll = () => {
-      const r = sl.getBoundingClientRect();
+  const slThing = sl && sl.querySelector('.thing');
+
+  if (parallaxDemo || sl) {
+    const tick = () => {
       const vh = window.innerHeight;
-      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
-      thing.style.transform = `scale(${0.5 + p * 0.8}) rotate(${p * 180}deg)`;
+      if (parallaxDemo && parallaxBg) {
+        const r = parallaxDemo.getBoundingClientRect();
+        const center = r.top + r.height / 2;
+        const delta = (center - vh / 2) / vh;
+        parallaxBg.style.transform = `translate3d(0, ${delta * -80}px, 0)`;
+      }
+      if (sl && slThing) {
+        const r = sl.getBoundingClientRect();
+        const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+        slThing.style.transform = `scale(${0.5 + p * 0.8}) rotate(${p * 180}deg)`;
+      }
+      requestAnimationFrame(tick);
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    requestAnimationFrame(tick);
   }
 
   /* ---------- M09 3D tilt ---------- */
