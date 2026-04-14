@@ -5,75 +5,217 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibe Code Your Portfolio — Workshop</title>
 
-  <!-- Reveal.js core + black theme via CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --accent: #ffb347;
-      --bg: #0e0e10;
+      --bg: #F8F6F2;
+      --ink: #0a0a0a;
+      --muted: #8A8A8A;
+      --line: #ECEAE4;
+      --red: #E63642;
     }
-    .reveal { font-family: 'Inter', system-ui, sans-serif; }
-    .reveal section { text-align: left; }
-    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Inter', sans-serif; text-transform: none; letter-spacing: -0.02em; }
-    .reveal h1 { font-size: 3.2em; font-weight: 800; line-height: 1.05; }
-    .reveal h2 { font-size: 2em; font-weight: 800; line-height: 1.1; }
-    .reveal h3 { font-size: 1.4em; font-weight: 600; color: var(--accent); }
-    .reveal p, .reveal li { font-size: 0.85em; line-height: 1.5; }
-    .reveal code, .reveal pre { font-family: 'JetBrains Mono', monospace; }
-    .reveal code { background: #1f1f23; padding: 0.1em 0.4em; border-radius: 4px; color: var(--accent); font-size: 0.9em; }
-    .reveal pre { box-shadow: none; background: #1f1f23; padding: 1em; border-radius: 8px; font-size: 0.6em; }
-    .reveal a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(255,179,71,0.4); }
-    .reveal a:hover { color: #fff; border-bottom-color: #fff; }
-    .accent { color: var(--accent); }
-    .muted { opacity: 0.6; font-size: 0.75em; }
-    .img-placeholder {
-      border: 2px dashed #555;
-      background: #1a1a1e;
-      padding: 2em;
-      text-align: center;
-      border-radius: 8px;
-      color: #888;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7em;
-      margin: 0.8em 0;
+
+    html, body { background: var(--bg); }
+    .reveal {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
     }
-    .screenshot {
-      display: block;
-      max-width: 100%;
-      max-height: 62vh;
-      margin: 0.8em auto;
-      border-radius: 10px;
-      border: 1px solid #2a2a2e;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    .reveal .slides section {
+      text-align: left;
+      padding: 2.5rem 3.5rem;
+      box-sizing: border-box;
     }
-    .caption {
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
+
+    /* Headings */
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: none;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 0.95;
+      margin: 0 0 0.4em;
+    }
+    .reveal h1 { font-size: 4.2em; }
+    .reveal h2 { font-size: 2.6em; }
+    .reveal h3 {
+      font-size: 0.95em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      margin-bottom: 0.4em;
+    }
+
+    /* Body text */
+    .reveal p, .reveal li {
+      font-size: 0.95em;
+      line-height: 1.5;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .reveal p { margin: 0.5em 0; max-width: 38em; }
+    .reveal strong { font-weight: 600; }
+    .reveal em { font-style: italic; color: var(--muted); }
+
+    /* Mono + code */
+    .reveal code, .reveal pre, .kicker, .caption, .mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .reveal code {
+      background: var(--line);
+      padding: 0.1em 0.45em;
+      border-radius: 3px;
+      color: var(--ink);
+      font-size: 0.82em;
+    }
+    .reveal pre {
+      box-shadow: none;
+      background: var(--line);
+      border-left: 3px solid var(--red);
+      padding: 0.9em 1.2em;
+      border-radius: 0;
+      font-size: 0.6em;
+      max-width: 32em;
+    }
+    .reveal pre code {
+      background: transparent;
+      padding: 0;
+      color: var(--ink);
+    }
+
+    /* Links */
+    .reveal a {
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(230, 54, 66, 0.35);
+    }
+    .reveal a:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    /* Accent helpers */
+    .accent { color: var(--red); }
+    .muted { color: var(--muted); }
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
       font-size: 0.55em;
-      color: #888;
-      margin-top: 0.4em;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 0.8em;
+    }
+    .kicker .num { color: var(--red); }
+    .rule { border-top: 1px solid var(--ink); margin: 1em 0; max-width: 38em; }
+
+    /* Lists — clean bullets, no arrows */
+    .reveal ul { list-style: none; padding-left: 0; max-width: 38em; }
+    .reveal ul li {
+      padding-left: 1.6em;
+      position: relative;
+      margin: 0.45em 0;
+    }
+    .reveal ul li::before {
+      content: '';
+      position: absolute;
+      left: 0.2em;
+      top: 0.72em;
+      width: 0.7em;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    /* Step pills (scroll row — no arrows) */
+    .flow {
+      display: flex;
+      gap: 0.5em;
+      flex-wrap: wrap;
+      margin-top: 1.5em;
+      max-width: none;
     }
     .flow-step {
-      display: inline-block;
-      padding: 0.4em 0.9em;
-      border: 1px solid #444;
-      border-radius: 999px;
-      margin: 0.2em;
-      font-size: 0.7em;
-      font-weight: 600;
+      border: 1px solid var(--ink);
+      padding: 0.5em 0.9em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5em;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
-    .flow-arrow { color: var(--accent); font-size: 1.2em; margin: 0 0.2em; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; }
-    .big-url { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; color: var(--accent); word-break: break-all; }
-    .kicker { text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.55em; opacity: 0.6; font-weight: 600; }
-    ul { list-style: none; padding-left: 0; }
-    ul li { padding-left: 1.2em; position: relative; margin: 0.3em 0; }
-    ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
-    .timer { position: fixed; top: 20px; right: 20px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--accent); z-index: 1000; opacity: 0.6; }
+    .flow-step .n { color: var(--red); margin-right: 0.5em; }
+
+    /* Split layout: text left, screenshot right */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+      gap: 3rem;
+      align-items: center;
+      height: 100%;
+    }
+    .split > .text { max-width: 30em; }
+    .split > .text ul, .split > .text p { max-width: none; }
+    .split > .visual { display: flex; align-items: center; justify-content: center; min-width: 0; }
+
+    .screenshot {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.14);
+    }
+    .caption {
+      margin-top: 0.8em;
+      font-size: 0.55em;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .big-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      color: var(--red);
+      word-break: break-all;
+    }
+
+    /* Cover slide */
+    .cover h1 {
+      font-size: 6em;
+      letter-spacing: -0.04em;
+    }
+    .cover .dot { color: var(--red); }
+    .cover .meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55em;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      border-top: 1px solid var(--ink);
+      padding-top: 1em;
+      margin-top: 2em;
+      max-width: none;
+    }
+
+    /* Reveal chrome — mute the default controls/progress in scroll view */
+    .reveal .controls { display: none !important; }
+    .reveal .progress { color: var(--red); }
+    .reveal .slide-number { font-family: 'JetBrains Mono', monospace; color: var(--muted); background: transparent; }
+
+    /* Scroll view tweaks */
+    .reveal.rs-view-scroll .scroll-page {
+      background: var(--bg);
+    }
   </style>
 </head>
 
@@ -82,128 +224,179 @@
 <div class="reveal">
   <div class="slides">
 
-  <!-- =================== SLIDE 1: COVER =================== -->
-  <section>
-    <p class="kicker">Workshop · 20 minutes</p>
-    <h1>Vibe Code<br>Your Portfolio</h1>
-    <p style="margin-top: 1.5em;">Build a live, public portfolio website in 20 minutes.<br>No coding. No installs. 100% free.</p>
-    <p class="muted" style="margin-top: 2em;">Instructor: Jiawen Wang</p>
+  <!-- =================== COVER =================== -->
+  <section class="cover">
+    <p class="kicker">Workshop <span class="num">/</span> 20 minutes</p>
+    <h1>Vibe Code<br>Your Portfolio<span class="dot">.</span></h1>
+    <p>Build a live, public portfolio website in 20 minutes.<br>No coding. No installs. 100% free.</p>
+    <div class="meta">
+      <span>Jiawen Wang</span>
+      <span>NYU · SEA</span>
+      <span>v0.1</span>
+    </div>
   </section>
 
-  <!-- =================== SLIDE 2: WHAT WE'RE BUILDING =================== -->
+  <!-- =================== WHAT YOU'LL HAVE =================== -->
   <section>
-    <p class="kicker">By the end of this session</p>
+    <p class="kicker"><span class="num">/</span> By the end</p>
     <h2>You'll have <span class="accent">this</span>.</h2>
-    <p><a href="https://jwwwwwang.github.io/portfolio-starter/demo.html" target="_blank" style="color: var(--accent);">Open demo ↗</a></p>
-    <p>Live at:
-      <span class="big-url">jwwwwwang.github.io/portfolio-starter/demo.html</span>
-    </p>
-    <p class="muted">Open it on your phone — this is a real, public website.</p>
+    <p>A real, public portfolio website, live at a URL you can send anyone.</p>
+    <p class="big-url">jwwwwwang.github.io/portfolio-starter/demo.html</p>
+    <p class="muted">↳ <a href="https://jwwwwwang.github.io/portfolio-starter/demo.html" target="_blank">Open the demo</a> &nbsp;·&nbsp; open it on your phone too</p>
   </section>
 
-  <!-- =================== SLIDE 3: THE FLOW =================== -->
+  <!-- =================== THE FLOW =================== -->
   <section>
-    <p class="kicker">The 20-minute flow</p>
+    <p class="kicker"><span class="num">/</span> The 20-minute flow</p>
     <h2>Five steps.</h2>
-    <p style="margin-top: 2em; text-align: center;">
-      <span class="flow-step">1 · Copy template</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step">2 · Enable Pages</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step">3 · Fill markdown</span><br><br>
-      <span class="flow-step">4 · Feed Gemini</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step">5 · Paste & publish</span>
-      <span class="flow-arrow">→</span>
-      <span class="flow-step">6 · Iterate</span>
-    </p>
-    <p class="muted" style="margin-top: 2em; text-align: center;">The walk-through doc has every step in detail — keep it open on your laptop.</p>
-    <p style="text-align: center;"><a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/WALKTHROUGH.md">github.com/JWWWWWANG/portfolio-starter → WALKTHROUGH.md</a></p>
+    <div class="flow">
+      <span class="flow-step"><span class="n">01</span>Copy template</span>
+      <span class="flow-step"><span class="n">02</span>Enable pages</span>
+      <span class="flow-step"><span class="n">03</span>Fill markdown</span>
+      <span class="flow-step"><span class="n">04</span>Feed gemini</span>
+      <span class="flow-step"><span class="n">05</span>Paste &amp; publish</span>
+      <span class="flow-step"><span class="n">06</span>Iterate</span>
+    </div>
+    <p class="muted" style="margin-top: 2em;">Every step is spelled out in the walk-through doc — keep it open on your laptop.</p>
+    <p><a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/WALKTHROUGH.md">github.com/JWWWWWANG/portfolio-starter → WALKTHROUGH.md</a></p>
   </section>
 
-  <!-- =================== SLIDE 4: STEP 1 — COPY TEMPLATE =================== -->
+  <!-- =================== STEP 1 =================== -->
   <section>
-    <p class="kicker">Step 1 · 30 seconds</p>
-    <h2>Copy the template.</h2>
+    <div class="split">
+      <div class="text">
+        <p class="kicker"><span class="num">01</span> Copy the template <span class="muted">· 30 sec</span></p>
+        <h2>One click to fork.</h2>
+        <ul>
+          <li>Open <a href="https://github.com/JWWWWWANG/portfolio-starter">portfolio-starter</a></li>
+          <li>Click the green <code>Use this template</code> button</li>
+          <li>Name it <code>portfolio</code>, set <strong>Public</strong></li>
+          <li>Click <code>Create repository</code></li>
+        </ul>
+      </div>
+      <div class="visual">
+        <figure>
+          <img class="screenshot" src="assets/slides/01-use-this-template.png" alt="The portfolio-starter repo with the Use this template button highlighted in the top right">
+          <figcaption class="caption">Top-right of the repo page.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== STEP 2a =================== -->
+  <section>
+    <div class="split">
+      <div class="text">
+        <p class="kicker"><span class="num">02</span> Turn on pages <span class="muted">· 1 min</span></p>
+        <h2>Settings → Pages.</h2>
+        <ul>
+          <li>Inside <strong>your new repo</strong> (not mine)</li>
+          <li>Open <code>Settings</code> → <code>Pages</code> in the left sidebar</li>
+          <li>Branch: <code>main</code> / <code>(root)</code></li>
+          <li>Click <code>Save</code></li>
+        </ul>
+      </div>
+      <div class="visual">
+        <figure>
+          <img class="screenshot" src="assets/slides/02a-pages-branch.png" alt="GitHub Pages settings showing Branch set to main with Save button highlighted">
+          <figcaption class="caption">Settings → Pages → Branch → Save.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== STEP 2b =================== -->
+  <section>
+    <div class="split">
+      <div class="text">
+        <p class="kicker"><span class="num">02</span> Write down your URL</p>
+        <h2>It goes live.</h2>
+        <p>Refresh the Pages page after a minute. A green banner shows your live URL.</p>
+        <p class="big-url">https://&lt;your-username&gt;.github.io/portfolio/</p>
+        <p class="muted"><strong>Write it down.</strong> Opening it now shows the placeholder — that's fine. We fill it in Step 5.</p>
+      </div>
+      <div class="visual">
+        <figure>
+          <img class="screenshot" src="assets/slides/02b-pages-live-url.png" alt="GitHub Pages settings showing the live site URL banner with a Visit site button">
+          <figcaption class="caption">Green banner: your site is live.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== STEP 3 =================== -->
+  <section>
+    <p class="kicker"><span class="num">03</span> Fill the template <span class="muted">· 5 min</span></p>
+    <h2>Pick a template. Fill the blanks.</h2>
     <ul>
-      <li>Open <a href="https://github.com/JWWWWWANG/portfolio-starter">github.com/JWWWWWANG/portfolio-starter</a></li>
-      <li>Click the green <code>Use this template</code> button → <code>Create a new repository</code></li>
-      <li>Name it <code>portfolio</code>, set <code>Public</code>, click <code>Create repository</code></li>
+      <li><code>templates/template-general.md</code> — universal base (start here)</li>
+      <li><code>templates/template-actor.md</code> — actors</li>
+      <li><code>templates/template-filmmaker.md</code> — filmmakers</li>
+      <li><code>templates/template-musician.md</code> — musicians</li>
     </ul>
-    <img class="screenshot" src="assets/slides/01-use-this-template.png" alt="The portfolio-starter repo on GitHub with the Use this template button highlighted in the top-right">
-    <p class="caption">Click the green "Use this template" button in the top-right</p>
+    <p>Click the file on GitHub, hit <code>Raw</code>, <code>Cmd+A / Cmd+C</code> into any text editor. Replace every <code>[[placeholder]]</code> with your content.</p>
+    <p class="accent"><strong>Short on time?</strong> Fill just Hero + About + one project. Everything else is optional.</p>
+    <p class="muted">Images → <code>assets/</code> folder. Videos → YouTube / Vimeo embed links. Audio → SoundCloud / Spotify.</p>
   </section>
 
-  <!-- =================== SLIDE 5: STEP 2A — ENABLE PAGES =================== -->
+  <!-- =================== STEP 4 — FEED GEMINI =================== -->
   <section>
-    <p class="kicker">Step 2 · 1 minute</p>
-    <h2>Turn on GitHub Pages.</h2>
+    <p class="kicker"><span class="num">04</span> Feed gemini <span class="muted">· 3 min · the core moment</span></p>
+    <h2>Three messages, <span class="accent">in order</span>.</h2>
     <ul>
-      <li>In <strong>your new repo</strong>, open <code>Settings</code> → <code>Pages</code> (in the left sidebar)</li>
-      <li>Under <strong>Branch</strong>, pick <code>main</code> / <code>/ (root)</code></li>
-      <li>Click <code>Save</code></li>
+      <li><strong>4.1</strong> — drag your <strong>style reference screenshot</strong> into Gemini. Say: <em>"Remember this visual style — colors, typography, layout, vibe."</em></li>
+      <li><strong>4.2</strong> — paste the <strong>system prompt</strong> from <a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/gemini-system-prompt.md">gemini-system-prompt.md</a></li>
+      <li><strong>4.3</strong> — paste your <strong>filled markdown template</strong>. Send.</li>
     </ul>
-    <img class="screenshot" src="assets/slides/02a-pages-branch.png" alt="GitHub Pages settings page showing the Branch dropdown set to main with the Save button highlighted">
-    <p class="caption">Settings → Pages → Branch: main → Save</p>
+    <p class="muted">No reference image? Describe it in words: <em>"minimal Swiss / brutalist / Y2K / editorial vintage."</em></p>
   </section>
 
-  <!-- =================== SLIDE 6: STEP 2B — WRITE DOWN URL =================== -->
+  <!-- =================== STEP 4.4 — COPY THE HTML =================== -->
   <section>
-    <p class="kicker">Step 2 · still 1 minute</p>
-    <h2>Write down your URL.</h2>
-    <p>After ~1 minute, refresh the Pages page. A green banner appears with your live URL.</p>
-    <img class="screenshot" src="assets/slides/02b-pages-live-url.png" alt="GitHub Pages settings showing the live site URL banner with a Visit site button">
-    <p class="caption">Your URL will look like <code>https://&lt;your-username&gt;.github.io/portfolio/</code></p>
-    <p class="accent">⚠️ If you open it now, you'll see the placeholder — that's fine. We fill it in Step 5.</p>
+    <div class="split">
+      <div class="text">
+        <p class="kicker"><span class="num">04</span> Copy the HTML</p>
+        <h2>One click.</h2>
+        <p>Gemini replies with one big HTML code block.</p>
+        <p>Hover over it. A <strong>Copy</strong> button appears in the top-right corner of the code block. <span class="accent">Click it.</span></p>
+        <p class="muted">The copy button gives you pure HTML — no ` ``` ` wrappers to clean up.</p>
+      </div>
+      <div class="visual">
+        <figure>
+          <img class="screenshot" src="assets/slides/04-gemini-copy-button.png" alt="Gemini chat window showing an HTML code block output with the Copy button highlighted in the top-right corner">
+          <figcaption class="caption">Top-right of the code block.</figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
-  <!-- =================== SLIDE 7: STEP 3 — MARKDOWN =================== -->
+  <!-- =================== STEP 5 =================== -->
   <section>
-    <p class="kicker">Step 3 · 5 minutes</p>
-    <h2>Fill the template.</h2>
-    <p>Open the <code>templates/</code> folder in your repo and pick the one that fits you:</p>
-    <ul>
-      <li><code>template-general.md</code> — universal base (start here if unsure)</li>
-      <li><code>template-actor.md</code> — actors</li>
-      <li><code>template-filmmaker.md</code> — filmmakers</li>
-      <li><code>template-musician.md</code> — musicians</li>
-    </ul>
-    <p>Click the file → <code>Raw</code> → <code>Cmd+A / Cmd+C</code> into any text editor. Replace every <code>[[placeholder]]</code> with your content.</p>
-    <p class="accent"><strong>Short on time? Fill just Hero + About + one project.</strong> Everything else is optional — add more later.</p>
-    <p class="muted">Images go in the <code>assets/</code> folder (drag-and-drop upload on GitHub). Videos → YouTube/Vimeo embed links. Audio → SoundCloud/Spotify.</p>
+    <div class="split">
+      <div class="text">
+        <p class="kicker"><span class="num">05</span> Paste &amp; publish <span class="muted">· 3 min</span></p>
+        <h2>Paste. Commit. Refresh.</h2>
+        <ul>
+          <li>In your repo, click <code>index.html</code></li>
+          <li>Click the <strong>pencil icon</strong> (top-right)</li>
+          <li><code>Cmd+A</code> → delete → <code>Cmd+V</code> paste the Gemini HTML</li>
+          <li>Click green <code>Commit changes…</code> → confirm</li>
+          <li>Open your Pages URL → <strong class="accent">refresh</strong></li>
+        </ul>
+        <p class="accent"><strong>Your site is live.</strong></p>
+      </div>
+      <div class="visual">
+        <figure>
+          <img class="screenshot" src="assets/slides/05-commit-changes.png" alt="GitHub web editor showing index.html being edited with the Commit changes dialog open">
+          <figcaption class="caption">Pencil → paste → commit.</figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
-  <!-- =================== SLIDE 8: STEP 4 — GEMINI =================== -->
+  <!-- =================== STEP 6 =================== -->
   <section>
-    <p class="kicker">Step 4 · 3 minutes · ⭐ The core moment</p>
-    <h2>Feed Gemini — <span class="accent">in order</span>.</h2>
-    <ul>
-      <li><strong>4.1</strong> — Drag your <strong>style reference screenshot</strong> into Gemini. Say: <em>"Remember this visual style — colors, typography, layout, vibe."</em></li>
-      <li><strong>4.2</strong> — Paste the <strong>system prompt</strong> from <a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/gemini-system-prompt.md">gemini-system-prompt.md</a> (the block under <em>v2 — The Prompt</em>).</li>
-      <li><strong>4.3</strong> — Paste your <strong>filled markdown template</strong>. Send.</li>
-      <li><strong>4.4</strong> — Gemini replies with an HTML code block. Hover it → click the <span class="accent">Copy</span> button in the top-right of the code block.</li>
-    </ul>
-    <p class="muted">No reference image? Just type a style in words: <em>"minimal Swiss / brutalist / Y2K / editorial vintage."</em></p>
-  </section>
-
-  <!-- =================== SLIDE 9: STEP 5 — DEPLOY =================== -->
-  <section>
-    <p class="kicker">Step 5 · 3 minutes</p>
-    <h2>Paste → commit → refresh.</h2>
-    <ul>
-      <li>In your repo, click <code>index.html</code></li>
-      <li>Click the <span class="accent">pencil icon</span> (Edit this file) in the top-right</li>
-      <li><code>Cmd+A</code> → <code>Delete</code> the placeholder → <code>Cmd+V</code> paste the Gemini HTML</li>
-      <li>Click the green <code>Commit changes…</code> button → confirm</li>
-      <li>Open your Pages URL → <strong class="accent">refresh</strong></li>
-    </ul>
-    <img class="screenshot" src="assets/slides/05-commit-changes.png" alt="GitHub web editor showing index.html being edited with the Commit changes dialog open">
-    <p class="accent" style="text-align: center; font-size: 1.2em; margin-top: 0.4em;">🎉 Your site is live.</p>
-  </section>
-
-  <!-- =================== SLIDE 9: STEP 6 — ITERATE =================== -->
-  <section>
-    <p class="kicker">Step 6 · 3 minutes · The fun part</p>
+    <p class="kicker"><span class="num">06</span> Iterate <span class="muted">· 3 min · the fun part</span></p>
     <h2>Direct Gemini with your voice.</h2>
     <p>Back in Gemini, try:</p>
     <pre><code>"Make the hero darker with a subtle gradient."
@@ -212,15 +405,15 @@
 "Make it more brutalist / Y2K / editorial."
 "Make it fully responsive on mobile."
 "Add a dark mode toggle."</code></pre>
-    <p>Copy → paste into <code>index.html</code> → commit → refresh.<br>
+    <p>Copy the new HTML → paste into <code>index.html</code> → commit → refresh.<br>
     <span class="accent">Repeat until you love it.</span></p>
   </section>
 
-  <!-- =================== SLIDE 10: STUCK / PLAN B =================== -->
+  <!-- =================== PLAN B =================== -->
   <section>
-    <p class="kicker">If you get stuck</p>
-    <h2>Plan B: <span class="accent">Netlify Drop</span></h2>
-    <p>No GitHub account? GitHub stuck? <strong>30-second backup:</strong></p>
+    <p class="kicker"><span class="num">/</span> If you get stuck</p>
+    <h2>Plan B: <span class="accent">Netlify Drop</span>.</h2>
+    <p>No GitHub account? GitHub stuck? 30-second backup:</p>
     <ul>
       <li>Open <a href="https://app.netlify.com/drop">netlify.com/drop</a></li>
       <li>Save Gemini's HTML as <code>index.html</code> on your desktop</li>
@@ -228,40 +421,32 @@
       <li>Netlify gives you a live URL immediately</li>
     </ul>
     <p class="muted">Trade-off: random URL, manual updates. But it always works.</p>
-    <p style="margin-top: 1em;"><strong>Other issues?</strong> Check the Troubleshooting section of the walk-through doc → <a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/WALKTHROUGH.md">WALKTHROUGH.md</a></p>
+    <p>Other issues? <a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/WALKTHROUGH.md">Troubleshooting section of the walk-through doc</a></p>
   </section>
 
-  <!-- =================== SLIDE 11: NEXT STEPS =================== -->
+  <!-- =================== AFTER TODAY =================== -->
   <section>
-    <p class="kicker">After today</p>
+    <p class="kicker"><span class="num">/</span> After today</p>
     <h2>Keep going at home.</h2>
-    <div class="two-col">
-      <div>
-        <h3>Iterate</h3>
-        <ul>
-          <li>Add more projects via Gemini</li>
-          <li>Try new styles</li>
-          <li>Re-commit in GitHub's web editor</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Custom domain</h3>
-        <ul>
-          <li>Get a <strong>free</strong> <code>.me</code> or <code>.tech</code> domain with <a href="https://education.github.com/pack">GitHub Student Pack</a></li>
-          <li>Or buy one ($1–$10/yr) from <a href="https://porkbun.com">Porkbun</a> / <a href="https://dash.cloudflare.com">Cloudflare</a></li>
-          <li>Bind it in <code>Settings → Pages → Custom domain</code></li>
-        </ul>
-      </div>
-    </div>
-    <p class="muted"><a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">Full custom-domain docs →</a></p>
+    <h3>Iterate</h3>
+    <ul>
+      <li>Add more projects via Gemini</li>
+      <li>Try new styles — re-commit in GitHub's web editor</li>
+    </ul>
+    <h3>Custom domain</h3>
+    <ul>
+      <li>Get a <strong>free</strong> <code>.me</code> or <code>.tech</code> with <a href="https://education.github.com/pack">GitHub Student Pack</a></li>
+      <li>Or buy one ($1–$10/yr) from <a href="https://porkbun.com">Porkbun</a> / <a href="https://dash.cloudflare.com">Cloudflare</a></li>
+      <li>Bind in <code>Settings → Pages → Custom domain</code></li>
+    </ul>
   </section>
 
-  <!-- =================== SLIDE 12: SHARE =================== -->
+  <!-- =================== SHARE =================== -->
   <section>
-    <p class="kicker">Share your URL</p>
-    <h2>Turn to your neighbor.</h2>
-    <p style="margin-top: 1.5em;">Open each other's sites on your phones.</p>
-    <p class="muted" style="margin-top: 1em;">Same 20 minutes. Totally different results. That's the point.</p>
+    <p class="kicker"><span class="num">/</span> Share your URL</p>
+    <h2>Turn to your neighbor<span class="accent">.</span></h2>
+    <p>Open each other's sites on your phones.</p>
+    <p class="muted">Same 20 minutes. Totally different results. That's the point.</p>
   </section>
 
   </div>
@@ -270,13 +455,17 @@
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
   Reveal.initialize({
+    view: 'scroll',
+    scrollProgress: true,
+    scrollLayout: 'full',
+    scrollSnap: 'mandatory',
+    controls: false,
+    progress: false,
+    slideNumber: false,
     hash: true,
-    transition: 'fade',
-    controls: true,
-    progress: true,
-    slideNumber: 'c/t',
     width: 1280,
     height: 800,
+    margin: 0.04,
   });
 </script>
 
