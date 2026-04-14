@@ -36,4 +36,4 @@ In your new repo:
 
 ---
 
-Built for the Vibe Coding Portfolio Workshop. Questions? Ask in the shared office hours doc.
+Built for the Vibe Coding Portfolio Workshop by Jiawen Wang.

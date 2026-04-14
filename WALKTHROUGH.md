@@ -217,7 +217,6 @@ If your GitHub flow stalls, or you don't have a GitHub account at all, use this 
 
 ## 📬 Keep Going
 
-- Stuck? Ask in the instructor's Office Hours or shared doc
 - Want more portfolio inspiration? Search "awwwards portfolio" / check [godly.website](https://godly.website) / [siteinspire.com](https://siteinspire.com)
 - Push Gemini harder — mention specific designers in your prompts: `in the style of Bruno Simon / Brittany Chiang / Cassie Evans`
 
