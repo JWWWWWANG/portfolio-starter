@@ -122,6 +122,19 @@ Gemini will spit out one big HTML code block. Hover over the code block — a **
 
 ---
 
+## Step 4.5 — Preview Instantly in JSFiddle (optional, but recommended)
+
+Don't want to commit to GitHub just to see what it looks like? Preview first:
+
+1. Open [jsfiddle.net](https://jsfiddle.net)
+2. Paste Gemini's HTML into the **HTML panel** (top-left)
+3. Hit **Run** (top bar) — you'll see the site render instantly on the right
+4. Happy with it? → Step 5. Not happy? → back to Gemini and iterate
+
+> 💡 This is also the fastest way to iterate in Step 6. Every time Gemini gives you a new version, paste it into JSFiddle first, preview, and only commit to GitHub once it's what you want.
+
+---
+
 ## Step 5 — Paste Into GitHub & Publish (3 min)
 
 1. Go back to your `portfolio` repo
@@ -159,10 +172,9 @@ Go back to Gemini and try:
 
 Each time Gemini gives you new code:
 1. Copy it
-2. Go back to GitHub, edit `index.html`
-3. Delete the old contents, paste the new
-4. Commit
-5. Refresh your live site
+2. **Preview in [JSFiddle](https://jsfiddle.net)** — paste into the HTML panel, hit Run, see it instantly
+3. Happy? → edit `index.html` in GitHub, replace the contents, commit
+4. Refresh your live site
 
 ---
 
