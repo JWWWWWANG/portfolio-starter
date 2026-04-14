@@ -306,7 +306,7 @@
       transition: color 0.3s, border-color 0.3s;
     }
     .spy-demo nav a.on { color: var(--red); border-left-color: var(--red); }
-    .spy-demo .content section {
+    .spy-demo .content .ss-section {
       min-height: 160px;
       padding: 12px 0;
       border-bottom: 1px solid var(--line);
@@ -806,10 +806,10 @@
           <a href="#ss4">04 / Contact</a>
         </nav>
         <div class="content">
-          <section id="ss1"><h5>Intro</h5><p>The scroll-spy TOC listens to which section is in view and highlights the matching link. Uses IntersectionObserver.</p></section>
-          <section id="ss2"><h5>Work</h5><p>When this block enters the viewport, the "02 / Work" link turns red. No libraries needed, about 15 lines of JavaScript.</p></section>
-          <section id="ss3"><h5>About</h5><p>Used by long-form editorial sites, documentation pages, and any portfolio with named sections.</p></section>
-          <section id="ss4"><h5>Contact</h5><p>The final section — once you reach here, the TOC is done and the user has a clear sense of where they've been.</p></section>
+          <div class="ss-section" id="ss1"><h5>Intro</h5><p>The scroll-spy TOC listens to which section is in view and highlights the matching link. Uses IntersectionObserver.</p></div>
+          <div class="ss-section" id="ss2"><h5>Work</h5><p>When this block enters the viewport, the "02 / Work" link turns red. No libraries needed, about 15 lines of JavaScript.</p></div>
+          <div class="ss-section" id="ss3"><h5>About</h5><p>Used by long-form editorial sites, documentation pages, and any portfolio with named sections.</p></div>
+          <div class="ss-section" id="ss4"><h5>Contact</h5><p>The final section — once you reach here, the TOC is done and the user has a clear sense of where they've been.</p></div>
         </div>
       </div></div></div>
     </div>
@@ -1162,7 +1162,7 @@
   const spy = document.querySelector('.spy-demo');
   if (spy) {
     const links = spy.querySelectorAll('nav a');
-    const sections = spy.querySelectorAll('.content section');
+    const sections = spy.querySelectorAll('.content .ss-section');
     const spyIO = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
