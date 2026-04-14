@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Vocabulary — Vibe Coding Portfolio Workshop</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F8F6F2;
+      --ink: #0a0a0a;
+      --muted: #8A8A8A;
+      --line: #ECEAE4;
+      --red: #E63642;
+    }
+
+    html, body { background: var(--bg); }
+    .reveal {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      color: var(--ink);
+      font-size: 22px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .reveal .slides section {
+      text-align: left;
+      padding: 2.5rem 3.5rem;
+      box-sizing: border-box;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: none;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 0.95;
+      margin: 0 0 0.4em;
+    }
+    .reveal h1 { font-size: 4.4em; }
+    .reveal h2 { font-size: 2.8em; }
+    .reveal h3 { font-size: 1.4em; font-weight: 500; color: var(--ink); text-transform: none; letter-spacing: -0.02em; }
+    .reveal h4 { font-size: 1em; font-weight: 500; }
+
+    .reveal p, .reveal li {
+      font-size: 0.9em;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 30em;
+    }
+    .reveal strong { font-weight: 600; }
+    .reveal em { font-style: italic; color: var(--muted); }
+
+    .mono, .kicker, .reveal code, .reveal pre { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .reveal code {
+      background: var(--line);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-size: 0.82em;
+      color: var(--ink);
+    }
+    .reveal pre {
+      box-shadow: none;
+      background: var(--line);
+      border-left: 3px solid var(--red);
+      padding: 0.9em 1.1em;
+      border-radius: 0;
+      font-size: 0.55em;
+      max-width: 100%;
+      margin: 1em 0;
+    }
+    .reveal pre code { background: transparent; padding: 0; color: var(--ink); font-size: 1em; white-space: pre-wrap; }
+
+    .reveal a { color: var(--red); border-bottom: 1px solid rgba(230,54,66,0.35); text-decoration: none; }
+    .reveal a:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    .accent { color: var(--red); }
+    .muted { color: var(--muted); }
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.55em;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 0.8em;
+    }
+    .kicker .num { color: var(--red); }
+
+    /* ---------- Glossary slide layout ---------- */
+    .gloss {
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+      gap: 3rem;
+      align-items: center;
+      height: 100%;
+    }
+    .gloss .info { max-width: 28em; }
+    .gloss .info h2 { margin-top: 0.1em; }
+    .gloss .info .desc { max-width: none; color: var(--ink); }
+    .gloss .info .label {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.55em;
+      color: var(--muted);
+      margin-top: 1.3em;
+      margin-bottom: 0.3em;
+    }
+
+    /* Demo frame */
+    .demo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 5 / 4;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.10);
+    }
+
+    /* ==================== LAYOUT DEMOS ==================== */
+
+    /* 01 — Bento grid */
+    .bento-demo {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 8px;
+      padding: 14px;
+      width: 100%;
+      height: 100%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .bento-demo span {
+      background: var(--line);
+      border: 1px solid var(--ink);
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+    }
+    .bento-demo span:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; background: var(--ink); color: var(--bg); }
+    .bento-demo span:nth-child(2) { grid-column: 3 / 5; grid-row: 1; }
+    .bento-demo span:nth-child(3) { grid-column: 3; grid-row: 2; }
+    .bento-demo span:nth-child(4) { grid-column: 4; grid-row: 2; background: var(--red); color: var(--bg); border-color: var(--red); }
+    .bento-demo span:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
+    .bento-demo span:nth-child(6) { grid-column: 3 / 5; grid-row: 3; }
+
+    /* 02 — Horizontal scroll */
+    .hscroll-demo {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 28px 24px;
+      height: 100%;
+      align-items: center;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink) transparent;
+    }
+    .hscroll-demo::-webkit-scrollbar { height: 6px; }
+    .hscroll-demo::-webkit-scrollbar-thumb { background: var(--ink); }
+    .hscroll-demo .c {
+      flex: 0 0 52%;
+      aspect-ratio: 4 / 5;
+      background: var(--line);
+      border: 1px solid var(--ink);
+      scroll-snap-align: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .hscroll-demo .c:nth-child(odd) { background: var(--ink); color: var(--bg); }
+
+    /* 03 — Split screen hero */
+    .split-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+    .split-demo .l {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      font-size: 42px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      background: var(--bg);
+    }
+    .split-demo .l .dot { color: var(--red); }
+    .split-demo .r { background: url('https://picsum.photos/seed/splitdemo/800/1000') center/cover; border-left: 1px solid var(--ink); }
+
+    /* 04 — Full-bleed video hero */
+    .fullbleed-demo { position: relative; height: 100%; overflow: hidden; }
+    .fullbleed-demo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: kenburns 18s ease-in-out infinite alternate; }
+    .fullbleed-demo::after { content:''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.65) 100%); }
+    .fullbleed-demo h3 { position: absolute; left: 24px; bottom: 24px; color: #fff; font-size: 46px; font-weight: 500; letter-spacing: -0.03em; line-height: 0.9; z-index: 1; }
+    .fullbleed-demo .dot { color: var(--red); }
+    @keyframes kenburns { from { transform: scale(1) translate(0,0); } to { transform: scale(1.15) translate(-3%,-3%); } }
+
+    /* 05 — Sticky editorial sidebar */
+    .sticky-demo { height: 100%; overflow-y: auto; padding: 0; }
+    .sticky-demo::-webkit-scrollbar { width: 6px; }
+    .sticky-demo::-webkit-scrollbar-thumb { background: var(--line); }
+    .sticky-demo .inner {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      padding: 20px;
+    }
+    .sticky-demo aside {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      padding-top: 4px;
+    }
+    .sticky-demo aside .dash { color: var(--red); }
+    .sticky-demo .main p { font-size: 12px; line-height: 1.7; margin: 0 0 14px; max-width: none; color: var(--ink); }
+
+    /* 06 — Masonry */
+    .mason-demo { columns: 3; column-gap: 8px; padding: 12px; height: 100%; box-sizing: border-box; overflow: hidden; }
+    .mason-demo div {
+      background: var(--line);
+      border: 1px solid var(--ink);
+      break-inside: avoid;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .mason-demo div:nth-child(1) { height: 130px; }
+    .mason-demo div:nth-child(2) { height: 80px; }
+    .mason-demo div:nth-child(3) { height: 110px; background: var(--ink); color: var(--bg); }
+    .mason-demo div:nth-child(4) { height: 90px; }
+    .mason-demo div:nth-child(5) { height: 140px; }
+    .mason-demo div:nth-child(6) { height: 70px; background: var(--red); color: var(--bg); border-color: var(--red); }
+    .mason-demo div:nth-child(7) { height: 100px; }
+    .mason-demo div:nth-child(8) { height: 90px; }
+    .mason-demo div:nth-child(9) { height: 60px; }
+
+    /* 07 — Hover reveal card */
+    .hover-demo { display: flex; align-items: center; justify-content: center; height: 100%; padding: 24px; background: var(--bg); }
+    .hc {
+      width: 62%;
+      cursor: pointer;
+    }
+    .hc .media { position: relative; overflow: hidden; aspect-ratio: 4/5; border: 1px solid var(--ink); background: #ddd; }
+    .hc .media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.3s cubic-bezier(.16,1,.3,1); }
+    .hc:hover .media img { transform: scale(1.08); }
+    .hc .media::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--red);
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(.16,1,.3,1);
+    }
+    .hc:hover .media::after { opacity: 0.28; }
+    .hc .arrow {
+      position: absolute; bottom: 12px; right: 12px;
+      width: 42px; height: 42px;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      transition: background 0.4s, color 0.4s, transform 0.5s cubic-bezier(.16,1,.3,1);
+      z-index: 1;
+    }
+    .hc:hover .arrow { background: var(--ink); color: var(--bg); transform: translate(-4px,-4px); }
+    .hc h4 { margin-top: 14px; font-size: 18px; font-weight: 500; letter-spacing: -0.02em; transition: color 0.4s; }
+    .hc:hover h4 { color: var(--red); }
+    .hover-demo .hint { position: absolute; top: 14px; right: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    /* 08 — Scroll-spy TOC */
+    .spy-demo { height: 100%; overflow-y: auto; }
+    .spy-demo::-webkit-scrollbar { width: 6px; }
+    .spy-demo::-webkit-scrollbar-thumb { background: var(--line); }
+    .spy-demo .inner { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 18px; }
+    .spy-demo nav { position: sticky; top: 18px; align-self: start; display: flex; flex-direction: column; gap: 6px; }
+    .spy-demo nav a {
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+      color: var(--muted);
+      border: none;
+      padding-left: 10px;
+      border-left: 1px solid var(--line);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .spy-demo nav a.on { color: var(--red); border-left-color: var(--red); }
+    .spy-demo .content section {
+      min-height: 160px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .spy-demo .content h5 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .spy-demo .content p { font-size: 12px; line-height: 1.6; margin: 0; max-width: none; color: var(--muted); }
+
+    /* 09 — Pinned scroll */
+    .pin-demo { height: 100%; overflow-y: auto; }
+    .pin-demo::-webkit-scrollbar { width: 6px; }
+    .pin-demo::-webkit-scrollbar-thumb { background: var(--line); }
+    .pin-demo .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 20px; }
+    .pin-demo .l {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+    }
+    .pin-demo .l .dot { color: var(--red); }
+    .pin-demo .r .card {
+      background: var(--line);
+      border: 1px solid var(--ink);
+      aspect-ratio: 4/3;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .pin-demo .r .card:nth-child(even) { background: var(--ink); color: var(--bg); }
+
+    /* 10 — Accordion */
+    .accord-demo { padding: 20px; display: flex; flex-direction: column; gap: 0; justify-content: center; height: 100%; }
+    .accord-demo details {
+      border-top: 1px solid var(--ink);
+      padding: 12px 0;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .accord-demo details:last-of-type { border-bottom: 1px solid var(--ink); }
+    .accord-demo summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .accord-demo summary::-webkit-details-marker { display: none; }
+    .accord-demo summary::after { content: '+'; color: var(--red); font-weight: 400; transition: transform 0.3s; }
+    .accord-demo details[open] summary::after { content: '−'; }
+    .accord-demo details p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin: 10px 0 4px;
+      max-width: none;
+    }
+
+    /* ==================== MOTION DEMOS ==================== */
+
+    /* M01 — Scroll fade-in */
+    .fade-demo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 28px; height: 100%; align-content: center; }
+    .fade-demo .item {
+      background: var(--line);
+      border: 1px solid var(--ink);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+    }
+    .fade-demo.play .item { opacity: 1; transform: none; }
+    .fade-demo.play .item:nth-child(2) { transition-delay: 0.12s; }
+    .fade-demo.play .item:nth-child(3) { transition-delay: 0.24s; }
+    .fade-demo.play .item:nth-child(4) { transition-delay: 0.36s; }
+    .fade-demo .item:nth-child(1) { background: var(--ink); color: var(--bg); }
+
+    /* M02 — Parallax */
+    .parallax-demo { position: relative; height: 100%; overflow: hidden; }
+    .parallax-demo .bg {
+      position: absolute;
+      inset: -10% -5%;
+      background: url('https://picsum.photos/seed/parallax/1200/1200') center/cover;
+      will-change: transform;
+    }
+    .parallax-demo .fg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 56px;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    .parallax-demo::after { content:''; position: absolute; inset: 0; background: rgba(0,0,0,0.25); }
+
+    /* M03 — Split-text reveal */
+    .text-demo { display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; }
+    .text-demo h3 {
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin: 0;
+    }
+    .text-demo .w { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .text-demo .w span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 0.9s cubic-bezier(.77,0,.175,1);
+    }
+    .text-demo.play .w span { transform: none; }
+    .text-demo.play .w:nth-child(2) span { transition-delay: 0.1s; }
+    .text-demo.play .w:nth-child(3) span { transition-delay: 0.2s; }
+    .text-demo.play .w:nth-child(4) span { transition-delay: 0.3s; }
+    .text-demo .dot { color: var(--red); }
+
+    /* M04 — Magnetic button */
+    .magnet-demo { display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; }
+    .magnet-demo button {
+      padding: 22px 44px;
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1), background 0.3s;
+    }
+    .magnet-demo button:hover { background: var(--red); }
+    .magnet-demo .hint { position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    /* M05 — Custom cursor */
+    .cursor-demo {
+      position: relative;
+      height: 100%;
+      background: var(--ink);
+      cursor: none;
+      overflow: hidden;
+    }
+    .cursor-demo .msg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bg);
+      font-size: 24px;
+      letter-spacing: -0.01em;
+      pointer-events: none;
+    }
+    .cursor-demo .cursor {
+      position: absolute;
+      left: 0; top: 0;
+      width: 34px; height: 34px;
+      border: 1.5px solid var(--red);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%,-50%);
+      transition: opacity 0.2s, width 0.3s, height 0.3s, background 0.3s;
+      mix-blend-mode: difference;
+    }
+
+    /* M06 — Clip-path reveal */
+    .clip-demo { position: relative; height: 100%; overflow: hidden; }
+    .clip-demo img {
+      width: 100%; height: 100%; object-fit: cover;
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path 1.6s cubic-bezier(.77,0,.175,1);
+    }
+    .clip-demo.play img { clip-path: inset(0 0 0 0); }
+    .clip-demo .label {
+      position: absolute; bottom: 16px; left: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      z-index: 1;
+      mix-blend-mode: difference;
+    }
+
+    /* M07 — Scroll-linked transforms */
+    .scrolllink-demo { position: relative; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .scrolllink-demo .thing {
+      width: 40%;
+      aspect-ratio: 1;
+      background: var(--red);
+      will-change: transform;
+    }
+    .scrolllink-demo .hint { position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    /* M08 — Marquee */
+    .marq-demo { display: flex; flex-direction: column; justify-content: center; gap: 18px; height: 100%; overflow: hidden; }
+    .marq-demo .track {
+      display: flex;
+      width: max-content;
+      white-space: nowrap;
+      animation: marq-a 18s linear infinite;
+      font-size: 42px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    .marq-demo .track.reverse { animation: marq-b 24s linear infinite; font-size: 26px; color: var(--muted); }
+    .marq-demo .track span { padding-right: 2rem; display: inline-block; }
+    .marq-demo .track .dot { color: var(--red); }
+    @keyframes marq-a { to { transform: translate3d(-50%,0,0); } }
+    @keyframes marq-b { from { transform: translate3d(-50%,0,0); } to { transform: translate3d(0,0,0); } }
+
+    /* M09 — Tilt hover */
+    .tilt-demo { display: flex; align-items: center; justify-content: center; height: 100%; padding: 20px; perspective: 1200px; }
+    .tilt-demo .card {
+      width: 62%;
+      aspect-ratio: 4/5;
+      background: url('https://picsum.photos/seed/tilt/800/1000') center/cover;
+      border: 1px solid var(--ink);
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(.16,1,.3,1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .tilt-demo .hint { position: absolute; top: 14px; left: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    /* M10 — SVG path draw */
+    .draw-demo { display: flex; align-items: center; justify-content: center; height: 100%; padding: 30px; }
+    .draw-demo svg { width: 90%; height: auto; }
+    .draw-demo path {
+      stroke: var(--red);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      transition: stroke-dashoffset 2.2s cubic-bezier(.77,0,.175,1);
+    }
+    .draw-demo.play path { stroke-dashoffset: 0; }
+    .draw-demo .name { font-size: 54px; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 0; }
+    .draw-demo .wrap { text-align: center; }
+
+    /* Reveal chrome */
+    .reveal .controls { display: none !important; }
+    .reveal .progress { color: var(--red); }
+
+    /* Cover / TOC layout */
+    .cover h1 { font-size: 6em; }
+    .cover .dot { color: var(--red); }
+    .cover .meta {
+      display: flex; justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55em; text-transform: uppercase; letter-spacing: 0.2em;
+      color: var(--muted);
+      border-top: 1px solid var(--ink);
+      padding-top: 1em; margin-top: 2em;
+      max-width: none;
+    }
+    .toc { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1.5em; max-width: none; }
+    .toc h3 { font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.2em; color: var(--red); font-family: 'JetBrains Mono', monospace; font-weight: 500; margin-bottom: 0.6em; }
+    .toc ol { list-style: none; padding: 0; counter-reset: li; margin: 0; }
+    .toc li {
+      counter-increment: li;
+      font-size: 0.85em;
+      padding: 0.35em 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 1em;
+    }
+    .toc li::before { content: counter(li, decimal-leading-zero); color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.75em; padding-top: 0.25em; }
+  </style>
+</head>
+
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+  <!-- ================= COVER ================= -->
+  <section class="cover">
+    <p class="kicker">Frontend vocabulary <span class="num">/</span> for Gemini prompts</p>
+    <h1>Name it.<br>Ask for it<span class="dot">.</span></h1>
+    <p>Twenty common patterns and motion effects you see on hot portfolio sites — with the exact words to tell Gemini when you want one.</p>
+    <div class="meta">
+      <span>Workshop bonus</span>
+      <span>Scroll down ↓</span>
+      <span>v0.1</span>
+    </div>
+  </section>
+
+  <!-- ================= TOC ================= -->
+  <section>
+    <p class="kicker"><span class="num">/</span> Contents</p>
+    <h2>Twenty things<br>to know by name.</h2>
+    <div class="toc">
+      <div>
+        <h3>Layouts</h3>
+        <ol>
+          <li>Bento grid</li>
+          <li>Horizontal scroll cards</li>
+          <li>Split-screen hero</li>
+          <li>Full-bleed video hero</li>
+          <li>Sticky editorial sidebar</li>
+          <li>Masonry grid</li>
+          <li>Hover reveal card</li>
+          <li>Scroll-spy TOC</li>
+          <li>Pinned scroll section</li>
+          <li>Accordion</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Motion</h3>
+        <ol>
+          <li>Scroll fade-in</li>
+          <li>Parallax scroll</li>
+          <li>Split-text reveal</li>
+          <li>Magnetic button</li>
+          <li>Custom cursor</li>
+          <li>Clip-path image reveal</li>
+          <li>Scroll-linked transforms</li>
+          <li>Marquee infinite loop</li>
+          <li>3D tilt on hover</li>
+          <li>SVG path draw</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- LAYOUTS                                            -->
+  <!-- ================================================== -->
+
+  <!-- L01 — Bento grid -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 01</span></p>
+        <h2>Bento grid.</h2>
+        <p class="desc">Tiles of different sizes packed into one asymmetric grid. Feels like a dashboard, loved by Apple, Linear, Vercel.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Arrange the projects in a bento-box grid with varied tile sizes — one big feature tile plus smaller supporting tiles.</code></pre>
+      </div>
+      <div class="demo"><div class="bento-demo">
+        <span>01 / feature</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- L02 — Horizontal scroll -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 02</span></p>
+        <h2>Horizontal scroll cards.</h2>
+        <p class="desc">A row of cards you swipe/drag sideways. Uses CSS <code>scroll-snap-type: x mandatory</code>. Great for projects.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Render the projects section as a horizontal scroll-snap slider with portrait cards. Users drag to see more.</code></pre>
+      </div>
+      <div class="demo"><div class="hscroll-demo">
+        <div class="c">01 / Tides</div>
+        <div class="c">02 / Drift</div>
+        <div class="c">03 / Ghosts</div>
+        <div class="c">04 / Static</div>
+        <div class="c">05 / Bloom</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- L03 — Split-screen hero -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 03</span></p>
+        <h2>Split-screen hero.</h2>
+        <p class="desc">Fifty-fifty landing page: name/manifesto on one side, a large image or video on the other.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Split the hero 50/50 — name and tagline on the left, a large portrait image or looping reel on the right.</code></pre>
+      </div>
+      <div class="demo"><div class="split-demo">
+        <div class="l">Maya<br>Chen<span class="dot">.</span></div>
+        <div class="r"></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- L04 — Full-bleed hero -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 04</span></p>
+        <h2>Full-bleed video hero.</h2>
+        <p class="desc">A muted autoplay video (or animated image) fills the entire viewport with the name overlaid. Maximum cinematic energy.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Full-viewport hero with a muted autoplay background video behind the name. Add a dark gradient overlay for contrast.</code></pre>
+      </div>
+      <div class="demo"><div class="fullbleed-demo">
+        <img src="https://picsum.photos/seed/fullbleed/1200/900" alt="">
+        <h3>Maya<br>Chen<span class="dot">.</span></h3>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- L05 — Sticky editorial sidebar -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 05</span></p>
+        <h2>Sticky editorial sidebar.</h2>
+        <p class="desc">A thin left column with a section number/label that sticks while the content scrolls past it. <em>Scroll inside the demo →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Add a sticky left sidebar showing the section number and label in mono font. Stays pinned as the main content scrolls.</code></pre>
+      </div>
+      <div class="demo"><div class="sticky-demo"><div class="inner">
+        <aside><span class="dash">—</span> 01 / About</aside>
+        <div class="main">
+          <p>I build real-time visual systems for dance, theater, and live music. My work lives at the edge where Houdini meshes with TouchDesigner and Unreal Engine.</p>
+          <p>Generative. Responsive. Made to be felt in a room. Currently researching camera-tracked projection for site-specific performance at NYU ITP.</p>
+          <p>Scroll inside this box to watch the section label stay pinned to the top while the text moves. That's <code>position: sticky; top: 20px</code>.</p>
+          <p>Used in editorial sites like Godly.website, Read.cv, and most long-form magazine layouts. Cheap, no JavaScript needed.</p>
+          <p>Pair it with a second sticky column on the right and you get a classic asymmetric editorial layout.</p>
+        </div>
+      </div></div></div>
+    </div>
+  </section>
+
+  <!-- L06 — Masonry -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 06</span></p>
+        <h2>Masonry grid.</h2>
+        <p class="desc">The Pinterest layout — columns of equal width, items flow top-to-bottom at their natural heights. Good for mixed-aspect imagery.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Render the projects as a masonry grid with varied image heights, using CSS columns.</code></pre>
+      </div>
+      <div class="demo"><div class="mason-demo">
+        <div>01</div><div>02</div><div>03</div><div>04</div><div>05</div><div>06</div><div>07</div><div>08</div><div>09</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- L07 — Hover reveal card -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 07</span></p>
+        <h2>Hover reveal card.</h2>
+        <p class="desc">On hover the image scales, a colored overlay fades in, the arrow button moves, and the title changes color. Four small changes add up to one strong interaction. <em>Hover the card →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>On hover, scale the project image 1.06x and fade in a red multiply overlay with the title sliding up and changing color.</code></pre>
+      </div>
+      <div class="demo hover-demo">
+        <p class="hint">Hover me</p>
+        <article class="hc">
+          <div class="media">
+            <img src="https://picsum.photos/seed/hoverreveal/800/1000" alt="">
+            <div class="arrow">→</div>
+          </div>
+          <h4>Fragmented Tides</h4>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- L08 — Scroll-spy TOC -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 08</span></p>
+        <h2>Scroll-spy TOC.</h2>
+        <p class="desc">A sticky table of contents that highlights the current section as you scroll. Helps with long pages. <em>Scroll inside →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Add a sticky scroll-spy table of contents in the left sidebar that highlights the currently visible section in red.</code></pre>
+      </div>
+      <div class="demo"><div class="spy-demo"><div class="inner">
+        <nav>
+          <a href="#ss1" class="on">01 / Intro</a>
+          <a href="#ss2">02 / Work</a>
+          <a href="#ss3">03 / About</a>
+          <a href="#ss4">04 / Contact</a>
+        </nav>
+        <div class="content">
+          <section id="ss1"><h5>Intro</h5><p>The scroll-spy TOC listens to which section is in view and highlights the matching link. Uses IntersectionObserver.</p></section>
+          <section id="ss2"><h5>Work</h5><p>When this block enters the viewport, the "02 / Work" link turns red. No libraries needed, about 15 lines of JavaScript.</p></section>
+          <section id="ss3"><h5>About</h5><p>Used by long-form editorial sites, documentation pages, and any portfolio with named sections.</p></section>
+          <section id="ss4"><h5>Contact</h5><p>The final section — once you reach here, the TOC is done and the user has a clear sense of where they've been.</p></section>
+        </div>
+      </div></div></div>
+    </div>
+  </section>
+
+  <!-- L09 — Pinned scroll -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 09</span></p>
+        <h2>Pinned scroll section.</h2>
+        <p class="desc">One column stays pinned while the other scrolls past. Pure <code>position: sticky</code>, no JavaScript. <em>Scroll inside →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Pin the project title on the left with position: sticky while a stack of detail cards scrolls past it on the right.</code></pre>
+      </div>
+      <div class="demo"><div class="pin-demo"><div class="inner">
+        <div class="l">Fragmented<br>Tides<span class="dot">.</span></div>
+        <div class="r">
+          <div class="card">01 / stills</div>
+          <div class="card">02 / documentation</div>
+          <div class="card">03 / process</div>
+          <div class="card">04 / credits</div>
+        </div>
+      </div></div></div>
+    </div>
+  </section>
+
+  <!-- L10 — Accordion -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Layout <span class="num">/ 10</span></p>
+        <h2>Accordion.</h2>
+        <p class="desc">Collapsible sections that expand on click. Native <code>&lt;details&gt;</code> element — no JS needed. Use for skills, FAQ, credits. <em>Click →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Render the skills as a native HTML accordion using &lt;details&gt;/&lt;summary&gt;, with the first item open by default and a red +/− icon.</code></pre>
+      </div>
+      <div class="demo"><div class="accord-demo">
+        <details open>
+          <summary>Software</summary>
+          <p>Houdini · Unreal Engine · TouchDesigner · Blender</p>
+        </details>
+        <details>
+          <summary>Languages</summary>
+          <p>Python · JavaScript · GLSL · C++</p>
+        </details>
+        <details>
+          <summary>Focus</summary>
+          <p>Projection mapping · Motion capture · Audio</p>
+        </details>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- MOTION                                             -->
+  <!-- ================================================== -->
+
+  <!-- M01 — Scroll fade-in -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 01</span></p>
+        <h2>Scroll fade-in.</h2>
+        <p class="desc">Elements fade up when they enter the viewport, staggered slightly so it feels cinematic. Built with <code>IntersectionObserver</code> — the base layer of every modern portfolio.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Fade sections in on scroll using IntersectionObserver with threshold 0.1, 900ms ease-out, 120ms stagger between siblings.</code></pre>
+      </div>
+      <div class="demo"><div class="fade-demo trigger">
+        <div class="item">01 / Tides</div>
+        <div class="item">02 / Drift</div>
+        <div class="item">03 / Ghosts</div>
+        <div class="item">04 / Bloom</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- M02 — Parallax -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 02</span></p>
+        <h2>Parallax scroll.</h2>
+        <p class="desc">The background moves slower than the foreground, creating depth. Use sparingly — a subtle 0.3× multiplier is plenty.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Add a subtle parallax effect where the hero image moves at 0.3x the scroll speed. Use a single requestAnimationFrame loop.</code></pre>
+      </div>
+      <div class="demo parallax-demo">
+        <div class="bg"></div>
+        <div class="fg">Parallax</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M03 — Split-text reveal -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 03</span></p>
+        <h2>Split-text reveal.</h2>
+        <p class="desc">The headline reveals word-by-word from below a clip. Wrap each word in a mask, translate the inner span. Classic on-load animation.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Animate the hero headline with a staggered word-by-word reveal — each word clipped and sliding up, 100ms between words.</code></pre>
+      </div>
+      <div class="demo"><div class="text-demo trigger">
+        <h3><span class="w"><span>Fragmented</span></span> <span class="w"><span>Tides</span></span> <span class="w"><span>—</span></span> <span class="w"><span>2026<span class="dot">.</span></span></span></h3>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- M04 — Magnetic button -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 04</span></p>
+        <h2>Magnetic button.</h2>
+        <p class="desc">The button eases toward the cursor when it gets close. A tiny detail that makes CTAs feel alive. <em>Hover the button →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Make the contact button magnetic — translate it toward the cursor when the cursor is within 80px, with a 0.3x strength and spring easing on reset.</code></pre>
+      </div>
+      <div class="demo magnet-demo">
+        <p class="hint">Hover me</p>
+        <button>Get in touch</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- M05 — Custom cursor -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 05</span></p>
+        <h2>Custom cursor.</h2>
+        <p class="desc">Hide the native cursor and replace it with your own shape — a circle, a dot, a crosshair. Adds instant "this site is custom-built" energy. <em>Hover the dark box →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Replace the default cursor with a 34px red outlined circle that follows the mouse with slight easing. Hide the native cursor on desktop only.</code></pre>
+      </div>
+      <div class="demo"><div class="cursor-demo">
+        <p class="msg">Hover inside this box.</p>
+        <div class="cursor"></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- M06 — Clip-path reveal -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 06</span></p>
+        <h2>Clip-path image reveal.</h2>
+        <p class="desc">Images don't just fade in — they're "wiped" from one side with a <code>clip-path: inset()</code> animation. Feels editorial, filmic.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Reveal project images on scroll with a clip-path wipe from left to right, 1.6s ease-in-out curve, triggered by IntersectionObserver.</code></pre>
+      </div>
+      <div class="demo clip-demo trigger">
+        <img src="https://picsum.photos/seed/clipreveal/1000/800" alt="">
+        <span class="label">01 / Fragmented Tides</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- M07 — Scroll-linked transforms -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 07</span></p>
+        <h2>Scroll-linked transforms.</h2>
+        <p class="desc">Scroll position directly drives a transform — scale, rotate, opacity. Unlike fade-in, it ties the animation progress to scroll amount. <em>Scroll past the slide →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>As the user scrolls past the hero, scale the big headline from 1.0 to 0.6 and fade its opacity from 1 to 0.4, tied directly to scroll progress.</code></pre>
+      </div>
+      <div class="demo scrolllink-demo">
+        <p class="hint">Scroll past me</p>
+        <div class="thing"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M08 — Marquee -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 08</span></p>
+        <h2>Marquee infinite loop.</h2>
+        <p class="desc">Text scrolls sideways forever — one direction on one row, the opposite direction on another. Pure CSS keyframes with a duplicated track. Strong editorial vibe.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Add a two-row marquee strip under the hero — big headline text scrolling left on top, smaller mono labels scrolling right on the bottom, both looping infinitely.</code></pre>
+      </div>
+      <div class="demo"><div class="marq-demo">
+        <div class="track">
+          <span>Real-time graphics</span><span class="dot">✦</span>
+          <span>Live performance</span><span class="dot">✦</span>
+          <span>Real-time graphics</span><span class="dot">✦</span>
+          <span>Live performance</span><span class="dot">✦</span>
+        </div>
+        <div class="track reverse">
+          <span>Houdini</span><span class="dot">·</span>
+          <span>TouchDesigner</span><span class="dot">·</span>
+          <span>Unreal Engine</span><span class="dot">·</span>
+          <span>Blender</span><span class="dot">·</span>
+          <span>Houdini</span><span class="dot">·</span>
+          <span>TouchDesigner</span><span class="dot">·</span>
+          <span>Unreal Engine</span><span class="dot">·</span>
+          <span>Blender</span><span class="dot">·</span>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- M09 — Tilt hover -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 09</span></p>
+        <h2>3D tilt on hover.</h2>
+        <p class="desc">The card rotates subtly on two axes following the cursor. Use <code>perspective</code> + <code>rotateX/Y</code>. Max 8° or it feels gimmicky. <em>Hover the card →</em></p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Add a 3D tilt effect to project cards — rotateX and rotateY based on cursor position, max 8 degrees, with 500ms ease-out on mouseleave.</code></pre>
+      </div>
+      <div class="demo tilt-demo">
+        <p class="hint">Hover the card</p>
+        <div class="card"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M10 — SVG path draw -->
+  <section>
+    <div class="gloss">
+      <div class="info">
+        <p class="kicker">Motion <span class="num">/ 10</span></p>
+        <h2>SVG path draw.</h2>
+        <p class="desc">A line or signature "draws itself" by animating <code>stroke-dashoffset</code>. Great for underlines, signatures, and hand-drawn arrows.</p>
+        <p class="label">Say to Gemini</p>
+        <pre><code>Draw an animated underline beneath the hero name using an inline SVG path with stroke-dasharray and stroke-dashoffset animation on scroll-in.</code></pre>
+      </div>
+      <div class="demo"><div class="draw-demo trigger">
+        <div class="wrap">
+          <p class="name">Maya Chen</p>
+          <svg viewBox="0 0 400 60">
+            <path d="M 10,40 Q 90,10 200,35 T 390,30"/>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSING ================= -->
+  <section>
+    <p class="kicker"><span class="num">/</span> Next</p>
+    <h2>Steal from the best.</h2>
+    <p>Every effect you just saw is on 100 other sites. When you find one you love, inspect it, name it, tell Gemini.</p>
+    <p><strong>Where to browse:</strong> <a href="https://godly.website">godly.website</a> · <a href="https://siteinspire.com">siteinspire.com</a> · <a href="https://www.awwwards.com">awwwards.com</a></p>
+    <p class="muted">Back to the workshop slides → <a href="slides.html">slides.html</a></p>
+  </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    view: 'scroll',
+    scrollProgress: true,
+    scrollLayout: 'full',
+    scrollSnap: false,
+    controls: false,
+    progress: false,
+    slideNumber: false,
+    hash: true,
+    width: 1280,
+    height: 800,
+    margin: 0.04,
+  });
+
+  /* ---------- Shared IntersectionObserver for .trigger demos ---------- */
+  const triggerIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add('play');
+      else e.target.classList.remove('play');
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.trigger').forEach((el) => triggerIO.observe(el));
+
+  /* ---------- M04 Magnetic button ---------- */
+  document.querySelectorAll('.magnet-demo').forEach((demo) => {
+    const btn = demo.querySelector('button');
+    if (!btn) return;
+    demo.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - (r.left + r.width / 2);
+      const y = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+    });
+    demo.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+
+  /* ---------- M05 Custom cursor ---------- */
+  document.querySelectorAll('.cursor-demo').forEach((demo) => {
+    const c = demo.querySelector('.cursor');
+    demo.addEventListener('mousemove', (e) => {
+      const r = demo.getBoundingClientRect();
+      c.style.transform = `translate(${e.clientX - r.left}px, ${e.clientY - r.top}px) translate(-50%, -50%)`;
+      c.style.opacity = 1;
+    });
+    demo.addEventListener('mouseleave', () => { c.style.opacity = 0; });
+  });
+
+  /* ---------- M02 Parallax ---------- */
+  const parallaxDemo = document.querySelector('.parallax-demo');
+  if (parallaxDemo) {
+    const bg = parallaxDemo.querySelector('.bg');
+    const onScroll = () => {
+      const r = parallaxDemo.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const center = r.top + r.height / 2;
+      const delta = (center - vh / 2) / vh;
+      bg.style.transform = `translate3d(0, ${delta * -80}px, 0)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- M07 Scroll-linked transform ---------- */
+  const sl = document.querySelector('.scrolllink-demo');
+  if (sl) {
+    const thing = sl.querySelector('.thing');
+    const onScroll = () => {
+      const r = sl.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+      thing.style.transform = `scale(${0.5 + p * 0.8}) rotate(${p * 180}deg)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ---------- M09 3D tilt ---------- */
+  document.querySelectorAll('.tilt-demo').forEach((demo) => {
+    const card = demo.querySelector('.card');
+    demo.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+      const y = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+      card.style.transform = `perspective(1200px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
+    });
+    demo.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  /* ---------- L08 Scroll-spy TOC ---------- */
+  const spy = document.querySelector('.spy-demo');
+  if (spy) {
+    const links = spy.querySelectorAll('nav a');
+    const sections = spy.querySelectorAll('.content section');
+    const spyIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          links.forEach((a) => a.classList.remove('on'));
+          const id = e.target.id;
+          const match = spy.querySelector(`nav a[href="#${id}"]`);
+          if (match) match.classList.add('on');
+        }
+      });
+    }, { root: spy, threshold: 0.5 });
+    sections.forEach((s) => spyIO.observe(s));
+  }
+</script>
+
+</body>
+</html>
