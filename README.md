@@ -2,6 +2,9 @@
 
 Starter template for the **Vibe Coding Portfolio Workshop** — a 20-minute session where students build a live, public portfolio website using Gemini and deploy it on GitHub Pages, for free.
 
+🔗 **Workshop home page:** https://jwwwwwang.github.io/portfolio-starter/
+&nbsp;&nbsp;&nbsp;&nbsp;→ one URL to access Gemini, the walk-through doc, and the slides
+
 ## How to Use This Template
 
 1. Click the green **"Use this template"** button at the top of this repo → **"Create a new repository"**
