@@ -80,6 +80,16 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 
 You can add everything else later, after your site is live, by going back to Gemini.
 
+### Where do my images go?
+
+Upload them to the [`assets/`](assets/) folder of your new repo:
+
+1. In your repo, click `assets/` → **Add file → Upload files**
+2. Drag your headshot / project images in → **Commit changes**
+3. In your markdown template, reference them as `assets/my-headshot.jpg`
+
+See [`assets/README.md`](assets/README.md) for image size rules and why videos should not be uploaded here.
+
 ---
 
 ## Step 4 — Feed It to Gemini (3 min) ⭐ the core moment

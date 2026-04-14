@@ -28,6 +28,7 @@ In your new repo:
 - `index.html` — a minimal placeholder page (with Tailwind CDN) that you'll replace with your real portfolio
 - `demo.html` — an example of a finished portfolio (Maya Chen, fictional)
 - `templates/` — four markdown templates (general, actor, filmmaker, musician) to fill in and hand to Gemini
+- `assets/` — drop your images and small media here; see `assets/README.md` for rules
 - `gemini-system-prompt.md` — the prompt to paste into Gemini before your content
 - `WALKTHROUGH.md` — step-by-step student guide
 - `slides.html` — the workshop slide deck
