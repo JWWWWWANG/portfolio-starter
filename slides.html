@@ -41,6 +41,22 @@
       font-size: 0.7em;
       margin: 0.8em 0;
     }
+    .screenshot {
+      display: block;
+      max-width: 100%;
+      max-height: 62vh;
+      margin: 0.8em auto;
+      border-radius: 10px;
+      border: 1px solid #2a2a2e;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .caption {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55em;
+      color: #888;
+      margin-top: 0.4em;
+    }
     .flow-step {
       display: inline-block;
       padding: 0.4em 0.9em;
@@ -105,78 +121,84 @@
     <p style="text-align: center;"><a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/WALKTHROUGH.md">github.com/JWWWWWANG/portfolio-starter → WALKTHROUGH.md</a></p>
   </section>
 
-  <!-- =================== SLIDE 4: STEPS 1-2 =================== -->
+  <!-- =================== SLIDE 4: STEP 1 — COPY TEMPLATE =================== -->
   <section>
-    <p class="kicker">Steps 1–2 · 2 minutes</p>
-    <h2>Get your repo + turn on Pages.</h2>
-    <div class="two-col">
-      <div>
-        <h3>1 · Copy the template</h3>
-        <ul>
-          <li>Open <a href="https://github.com/JWWWWWANG/portfolio-starter">portfolio-starter</a></li>
-          <li>Click <code>Use this template</code></li>
-          <li>Name it <code>portfolio</code></li>
-          <li>Set to <code>Public</code></li>
-        </ul>
-      </div>
-      <div>
-        <h3>2 · Enable Pages</h3>
-        <ul>
-          <li><code>Settings</code> → <code>Pages</code></li>
-          <li>Branch: <code>main</code></li>
-          <li>Click <code>Save</code></li>
-          <li><span class="accent">Write down your URL</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="img-placeholder">
-      [ SCREENSHOT: "Use this template" button + Pages settings page ]
-    </div>
+    <p class="kicker">Step 1 · 30 seconds</p>
+    <h2>Copy the template.</h2>
+    <ul>
+      <li>Open <a href="https://github.com/JWWWWWANG/portfolio-starter">github.com/JWWWWWANG/portfolio-starter</a></li>
+      <li>Click the green <code>Use this template</code> button → <code>Create a new repository</code></li>
+      <li>Name it <code>portfolio</code>, set <code>Public</code>, click <code>Create repository</code></li>
+    </ul>
+    <img class="screenshot" src="assets/slides/01-use-this-template.png" alt="The portfolio-starter repo on GitHub with the Use this template button highlighted in the top-right">
+    <p class="caption">Click the green "Use this template" button in the top-right</p>
   </section>
 
-  <!-- =================== SLIDE 6: STEP 3 — MARKDOWN =================== -->
+  <!-- =================== SLIDE 5: STEP 2A — ENABLE PAGES =================== -->
+  <section>
+    <p class="kicker">Step 2 · 1 minute</p>
+    <h2>Turn on GitHub Pages.</h2>
+    <ul>
+      <li>In <strong>your new repo</strong>, open <code>Settings</code> → <code>Pages</code> (in the left sidebar)</li>
+      <li>Under <strong>Branch</strong>, pick <code>main</code> / <code>/ (root)</code></li>
+      <li>Click <code>Save</code></li>
+    </ul>
+    <img class="screenshot" src="assets/slides/02a-pages-branch.png" alt="GitHub Pages settings page showing the Branch dropdown set to main with the Save button highlighted">
+    <p class="caption">Settings → Pages → Branch: main → Save</p>
+  </section>
+
+  <!-- =================== SLIDE 6: STEP 2B — WRITE DOWN URL =================== -->
+  <section>
+    <p class="kicker">Step 2 · still 1 minute</p>
+    <h2>Write down your URL.</h2>
+    <p>After ~1 minute, refresh the Pages page. A green banner appears with your live URL.</p>
+    <img class="screenshot" src="assets/slides/02b-pages-live-url.png" alt="GitHub Pages settings showing the live site URL banner with a Visit site button">
+    <p class="caption">Your URL will look like <code>https://&lt;your-username&gt;.github.io/portfolio/</code></p>
+    <p class="accent">⚠️ If you open it now, you'll see the placeholder — that's fine. We fill it in Step 5.</p>
+  </section>
+
+  <!-- =================== SLIDE 7: STEP 3 — MARKDOWN =================== -->
   <section>
     <p class="kicker">Step 3 · 5 minutes</p>
     <h2>Fill the template.</h2>
-    <p>Pick the template matching your discipline:</p>
+    <p>Open the <code>templates/</code> folder in your repo and pick the one that fits you:</p>
     <ul>
-      <li><code>template-general.md</code> — universal base</li>
+      <li><code>template-general.md</code> — universal base (start here if unsure)</li>
       <li><code>template-actor.md</code> — actors</li>
       <li><code>template-filmmaker.md</code> — filmmakers</li>
       <li><code>template-musician.md</code> — musicians</li>
     </ul>
-    <p style="margin-top: 1em;">Replace every <code>[[placeholder]]</code> with your content.</p>
-    <p class="accent"><strong>Short on time? Just fill: Hero + About + one project.</strong> Add the rest later.</p>
+    <p>Click the file → <code>Raw</code> → <code>Cmd+A / Cmd+C</code> into any text editor. Replace every <code>[[placeholder]]</code> with your content.</p>
+    <p class="accent"><strong>Short on time? Fill just Hero + About + one project.</strong> Everything else is optional — add more later.</p>
+    <p class="muted">Images go in the <code>assets/</code> folder (drag-and-drop upload on GitHub). Videos → YouTube/Vimeo embed links. Audio → SoundCloud/Spotify.</p>
   </section>
 
-  <!-- =================== SLIDE 7: STEP 4 — GEMINI =================== -->
+  <!-- =================== SLIDE 8: STEP 4 — GEMINI =================== -->
   <section>
     <p class="kicker">Step 4 · 3 minutes · ⭐ The core moment</p>
     <h2>Feed Gemini — <span class="accent">in order</span>.</h2>
     <ul>
-      <li><strong>4.1</strong> — Drag your style reference screenshot into Gemini.<br><span class="muted">"Remember this visual style — colors, typography, layout, vibe."</span></li>
-      <li><strong>4.2</strong> — Paste the <strong>system prompt</strong> (from the walk-through doc).</li>
-      <li><strong>4.3</strong> — Paste your <strong>filled markdown template</strong>.</li>
-      <li><strong>4.4</strong> — Gemini outputs HTML. <code>Cmd+A</code> → <code>Cmd+C</code>.</li>
+      <li><strong>4.1</strong> — Drag your <strong>style reference screenshot</strong> into Gemini. Say: <em>"Remember this visual style — colors, typography, layout, vibe."</em></li>
+      <li><strong>4.2</strong> — Paste the <strong>system prompt</strong> from <a href="https://github.com/JWWWWWANG/portfolio-starter/blob/main/gemini-system-prompt.md">gemini-system-prompt.md</a> (the block under <em>v2 — The Prompt</em>).</li>
+      <li><strong>4.3</strong> — Paste your <strong>filled markdown template</strong>. Send.</li>
+      <li><strong>4.4</strong> — Gemini replies with an HTML code block. Hover it → click the <span class="accent">Copy</span> button in the top-right of the code block.</li>
     </ul>
-    <p class="muted">⚠️ If the output starts with ` ```html ` — delete that line and the closing ` ``` `. Raw HTML only.</p>
+    <p class="muted">No reference image? Just type a style in words: <em>"minimal Swiss / brutalist / Y2K / editorial vintage."</em></p>
   </section>
 
-  <!-- =================== SLIDE 8: STEP 5 — DEPLOY =================== -->
+  <!-- =================== SLIDE 9: STEP 5 — DEPLOY =================== -->
   <section>
     <p class="kicker">Step 5 · 3 minutes</p>
     <h2>Paste → commit → refresh.</h2>
     <ul>
       <li>In your repo, click <code>index.html</code></li>
-      <li>Click the <span class="accent">pencil icon</span> (Edit this file)</li>
-      <li><code>Cmd+A</code> → <code>Delete</code> → <code>Paste</code> the Gemini HTML</li>
-      <li>Scroll down → <code>Commit changes</code></li>
+      <li>Click the <span class="accent">pencil icon</span> (Edit this file) in the top-right</li>
+      <li><code>Cmd+A</code> → <code>Delete</code> the placeholder → <code>Cmd+V</code> paste the Gemini HTML</li>
+      <li>Click the green <code>Commit changes…</code> button → confirm</li>
       <li>Open your Pages URL → <strong class="accent">refresh</strong></li>
     </ul>
-    <div class="img-placeholder">
-      [ SCREENSHOT: pencil icon + Commit changes button ]
-    </div>
-    <p class="accent" style="text-align: center; font-size: 1.2em;">🎉 Your site is live.</p>
+    <img class="screenshot" src="assets/slides/05-commit-changes.png" alt="GitHub web editor showing index.html being edited with the Commit changes dialog open">
+    <p class="accent" style="text-align: center; font-size: 1.2em; margin-top: 0.4em;">🎉 Your site is live.</p>
   </section>
 
   <!-- =================== SLIDE 9: STEP 6 — ITERATE =================== -->
