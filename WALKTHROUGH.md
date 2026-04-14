@@ -65,12 +65,12 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 
 ## Step 3 — Fill the Markdown Template (5 min)
 
-1. Based on your discipline, pick one of the four templates your instructor provides:
-   - `template-general.md` — universal
-   - `template-actor.md` — actors
-   - `template-filmmaker.md` — filmmakers
-   - `template-musician.md` — musicians
-2. Copy the entire template into any text editor (Notes, VS Code, even Gemini's chat box works)
+1. Based on your discipline, pick one of the four templates in the [`templates/`](templates/) folder of this repo:
+   - [`template-general.md`](templates/template-general.md) — universal
+   - [`template-actor.md`](templates/template-actor.md) — actors
+   - [`template-filmmaker.md`](templates/template-filmmaker.md) — filmmakers
+   - [`template-musician.md`](templates/template-musician.md) — musicians
+2. Click the template on GitHub, hit the **Raw** button, then **Cmd+A / Cmd+C** to copy the whole thing into any text editor (Notes, VS Code, even Gemini's chat box)
 3. Replace every `[[placeholder like this]]` with your own content
 
 **Short on time? Fill these three first:**
@@ -96,9 +96,9 @@ You can add everything else later, after your site is live, by going back to Gem
 
 > 💡 No reference image? Describe it in words: `I want a minimal, modern, dark-mode portfolio with elegant serif headings.`
 
-### 4.2 Paste the system prompt (instructor provides)
+### 4.2 Paste the system prompt
 
-Paste the system prompt your instructor gave you — the one starting with *"You are a senior frontend designer..."*.
+Copy the prompt from [`gemini-system-prompt.md`](gemini-system-prompt.md) (the block under **v2 — The Prompt**, starting with *"You are a senior frontend designer..."*) and paste it into Gemini.
 
 ### 4.3 Paste your filled-in markdown content
 
