@@ -28,9 +28,8 @@ In your new repo:
 
 ## Workshop Materials
 
-- Walk-through doc: [link to be filled in]
-- Markdown templates (general / actor / filmmaker / musician): [link to be filled in]
-- Gemini system prompt: [link to be filled in]
+- **Walk-through doc** → [WALKTHROUGH.md](WALKTHROUGH.md) (the full step-by-step guide for students)
+- **Slide deck** → [slides.html](https://jwwwwwang.github.io/portfolio-starter/slides.html) (live via GitHub Pages)
 
 ---
 
