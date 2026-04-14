@@ -116,9 +116,9 @@ Paste the entire filled template from Step 3 into Gemini and send.
 
 ### 4.4 Copy Gemini's output
 
-Gemini will spit out a big chunk of HTML. **Select all** (Cmd+A) → **Copy** (Cmd+C).
+Gemini will spit out one big HTML code block. Hover over the code block — a **Copy** button appears in the top-right corner. Click it.
 
-> ⚠️ If the output starts with ` ```html ` or ends with ` ``` `, manually delete those wrapper lines. You want **pure HTML only**.
+> ⚠️ The copy button gives you pure HTML (no ` ``` ` wrappers). If you **did** accidentally select the ` ```html ` or closing ` ``` ` line with Cmd+A, just delete those two lines after pasting.
 
 ---
 
@@ -171,7 +171,7 @@ Each time Gemini gives you new code:
 | Problem | Fix |
 |---|---|
 | Site shows 404 | Wait 2 more minutes; confirm Pages is set to `main` branch |
-| HTML has ` ``` ` at the start/end | Manually delete the code-block wrappers; keep only raw HTML |
+| HTML has ` ``` ` at the start/end after pasting | You copied the fence by accident — delete the first and last lines (` ```html ` / ` ``` `) |
 | Gemini's output is cut off | Reply `continue` to make it finish; or say `output the full file in one message` |
 | Images / videos don't show up | Double-check the URLs; videos must be **embed** links, not watch links |
 | Layout looks broken | Make sure this line is in your HTML: `<script src="https://cdn.tailwindcss.com"></script>` — if missing, ask Gemini to add it |

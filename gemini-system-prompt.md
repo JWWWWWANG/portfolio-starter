@@ -44,9 +44,8 @@ LAYOUT DIRECTION
 - Contact / footer is minimal — name, a short line, and social links as icons or plain text.
 
 OUTPUT FORMAT — READ THIS CAREFULLY
-- Output the raw HTML source and nothing else.
-- Do NOT wrap the output in ```html``` or ``` code fences.
-- Do NOT include any explanation, preface, or commentary before or after the HTML.
+- Wrap the entire HTML file inside a single ```html ... ``` code block so it can be copied with one click. Nothing else should be inside that code block.
+- Do NOT include any explanation, preface, or commentary before or after the code block. The code block is the entire response.
 - Do NOT truncate. Output the entire file from `<!DOCTYPE html>` to `</html>` in a single response.
 - If the file would be very long, prioritize completing it over stylistic flourishes.
 
@@ -94,7 +93,8 @@ You're tuning until **all 15 combinations produce sites you'd feel proud showing
 
 | Failure | Likely cause | Fix in prompt |
 |---|---|---|
-| Output wrapped in ` ```html ` | Gemini defaulting to chat formatting | Reinforce "no code fences" line, move it higher |
+| Output NOT wrapped in ` ```html ` | Gemini ignoring the "wrap in code block" rule | Reinforce the OUTPUT FORMAT line, move it higher |
+| Commentary leaks outside the code block | Gemini defaulting to chat formatting | Strengthen "The code block is the entire response" |
 | Fake projects / lorem ipsum | Gemini "being helpful" | Strengthen "Use ONLY the content I provide" |
 | Output truncated halfway | Long content + default output limit | Add "prioritize completing over flourishes," ask student to say `continue` |
 | Plain/boring design | Reference image ignored | Have student re-send reference + say "match THIS style exactly" |
