@@ -32,12 +32,14 @@ In your new repo:
 - `gemini-system-prompt.md` — the prompt to paste into Gemini before your content
 - `WALKTHROUGH.md` — step-by-step student guide
 - `slides.html` — the workshop slide deck
+- `glossary.html` — 10 layout patterns + 10 motion effects, each with a Gemini prompt and a live demo
 - `LICENSE` — MIT
 
 ## Workshop Materials
 
 - **Walk-through doc** → [WALKTHROUGH.md](WALKTHROUGH.md) (the full step-by-step guide for students)
 - **Slide deck** → [slides.html](https://jwwwwwang.github.io/portfolio-starter/slides.html) (live via GitHub Pages)
+- **Glossary** → [glossary.html](https://jwwwwwang.github.io/portfolio-starter/glossary.html) (20 effect demos + prompts)
 
 ---
 
