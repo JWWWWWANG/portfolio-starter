@@ -1,7 +1,7 @@
 # 📘 Portfolio Workshop — Student Handbook
 
 Welcome! This is a complete, **follow-along** step-by-step guide.
-Try to finish in the 20-minute session — but if you don't, that's fine. Take this doc home and finish at your own pace.
+Take this doc home and finish at your own pace.
 
 ---
 
@@ -20,7 +20,7 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 
 ---
 
-## Step 0 — Account Setup (3 min)
+## Step 0 — Account Setup
 
 ### Sign up for GitHub (if you don't have one)
 
@@ -36,7 +36,7 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 
 ---
 
-## Step 1 — Copy the Template Repo (30 sec)
+## Step 1 — Copy the Template Repo
 
 1. Open [github.com/JWWWWWANG/portfolio-starter](https://github.com/JWWWWWANG/portfolio-starter)
 2. Click **Use this template → Create a new repository** (top right)
@@ -48,14 +48,14 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 
 ---
 
-## Step 2 — Enable GitHub Pages Early (1 min, important)
+## Step 2 — Enable GitHub Pages Early (important)
 
 **Turn Pages on before you even have real content.** This way, every time you commit new HTML, you only need to refresh the page to see it live.
 
 1. In your new `portfolio` repo, click **Settings**
 2. In the left sidebar, find **Pages**
 3. Under **Branch**, select `main` and folder `/ (root)`, then click **Save**
-4. Wait ~10 seconds. At the top of the page you'll see:
+4. At the top of the page you'll see:
    > Your site is live at `https://<your-username>.github.io/portfolio/`
 5. **Write this URL down.** Opening it now shows placeholder content — that's normal.
 
@@ -63,7 +63,7 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 
 ---
 
-## Step 3 — Fill the Markdown Template (5 min)
+## Step 3 — Fill the Markdown Template
 
 1. Based on your discipline, pick one of the four templates in the [`templates/`](templates/) folder of this repo:
    - [`template-general.md`](templates/template-general.md) — universal
@@ -73,7 +73,7 @@ Try to finish in the 20-minute session — but if you don't, that's fine. Take t
 2. Click the template on GitHub, hit the **Raw** button, then **Cmd+A / Cmd+C** to copy the whole thing into any text editor (Notes, VS Code, even Gemini's chat box)
 3. Replace every `[[placeholder like this]]` with your own content
 
-**Short on time? Fill these three first:**
+**Going minimal? Fill these three first:**
 - Hero (name + one-line tagline)
 - About (2–3 sentences)
 - At least 1 project
@@ -92,7 +92,7 @@ See [`assets/README.md`](assets/README.md) for image size rules and why videos s
 
 ---
 
-## Step 4 — Feed It to Gemini (3 min) ⭐ the core moment
+## Step 4 — Feed It to Gemini ⭐ the core moment
 
 **Do this in order — order matters.**
 
@@ -135,7 +135,7 @@ Don't want to commit to GitHub just to see what it looks like? Preview first:
 
 ---
 
-## Step 5 — Paste Into GitHub & Publish (3 min)
+## Step 5 — Paste Into GitHub & Publish
 
 1. Go back to your `portfolio` repo
 2. Click the file `index.html`
@@ -154,11 +154,11 @@ Open the URL you wrote down in Step 2. **Refresh the page.**
 
 🎉 **Your portfolio is live.**
 
-> Still seeing 404? Wait 1–2 more minutes and refresh again. GitHub sometimes takes a moment to deploy.
+> Still seeing 404? Refresh again. GitHub sometimes takes a moment to deploy.
 
 ---
 
-## Step 6 — Iterate (3 min, the fun part)
+## Step 6 — Iterate (the fun part)
 
 This is the heart of vibe coding: **directing Gemini with natural language**.
 
@@ -182,12 +182,12 @@ Each time Gemini gives you new code:
 
 | Problem | Fix |
 |---|---|
-| Site shows 404 | Wait 2 more minutes; confirm Pages is set to `main` branch |
+| Site shows 404 | Refresh again; confirm Pages is set to `main` branch |
 | HTML has ` ``` ` at the start/end after pasting | You copied the fence by accident — delete the first and last lines (` ```html ` / ` ``` `) |
 | Gemini's output is cut off | Reply `continue` to make it finish; or say `output the full file in one message` |
 | Images / videos don't show up | Double-check the URLs; videos must be **embed** links, not watch links |
 | Layout looks broken | Make sure this line is in your HTML: `<script src="https://cdn.tailwindcss.com"></script>` — if missing, ask Gemini to add it |
-| No GitHub account, running out of time | 🚨 Jump to Plan B at the bottom |
+| No GitHub account | 🚨 Jump to Plan B at the bottom |
 
 ---
 
@@ -225,7 +225,7 @@ Full guide: [GitHub Pages custom domain docs](https://docs.github.com/en/pages/c
 
 ## 🆘 Plan B — Netlify Drop (the backup)
 
-If your GitHub flow stalls, or you don't have a GitHub account at all, use this — **live URL in 30 seconds**:
+If your GitHub flow stalls, or you don't have a GitHub account at all, use this — **instant live URL**:
 
 1. Open [netlify.com/drop](https://app.netlify.com/drop)
 2. Save Gemini's HTML into a file called `index.html` (saving it to your desktop is fine)
